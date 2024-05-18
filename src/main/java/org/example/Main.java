@@ -44,6 +44,23 @@ public static void main(String[] args) {
                 System.err.println("Failed to load file " + e.getMessage());
         }
 
+        // serialise queue
+        try {
+                steps.serializeQueue("yourStepsSerialized.ser");
+                System.out.println("Steps serialized");
+        } catch (IOException e) {
+                System.err.println("Failed to save file: " + e.getMessage());
+        }
+
+        // read from serialize
+        try {
+                Step step = steps.loadFromFile("yourStepsSerialized.ser");
+                System.out.println("Loaded from serialize." + step.getQueue());
+
+        } catch (IOException | ClassNotFoundException e) {
+                System.err.println("Failed to load steps: " + e.getMessage());
+        }
+
         sc.close();
     }
 }
