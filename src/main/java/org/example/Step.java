@@ -1,6 +1,8 @@
 package org.example;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayDeque;
@@ -32,6 +34,16 @@ public class Step {
             for(String step : queue) {
                 writer.write(step);
                 writer.newLine();
+            }
+        }
+   }
+
+   public void leadTxtFile(String filename) throws IOException {
+        queue.clear();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                queue.add(line);
             }
         }
    }
