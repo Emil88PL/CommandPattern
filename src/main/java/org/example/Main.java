@@ -36,6 +36,14 @@ public static void main(String[] args) {
                 System.err.println("Filed to save file: " + e.getMessage());
         }
 
+        // load steps from file
+        try {
+                steps.leadTxtFile("yourSteps.txt");
+                System.out.println("Loaded queue from text file " + steps.getQueue());
+        } catch (IOException e) {
+                System.err.println("Failed to load file " + e.getMessage());
+        }
+
         sc.close();
     }
 }
